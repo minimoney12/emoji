@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="block">复制成功!</div>
+<textarea id="input" style="opacity: 0;position: absolute;top: -100px"></textarea>
+<!--<div>-->
+<!--    <button name="emoji" onclick="copy(this)"><font name="word">(๑•̀ㅂ•́)و✧</font></button>-->
+<!--    <p name="infomation">棒</p>-->
+<!--</div>-->
+
+<!--<div style="position:relative;left: 150px;bottom: 177px">-->
+<!--    <button name="emoji" onclick="copy(this)"><font name="word">(　ﾟ∀ﾟ) ﾉ♡</font></button>-->
+<!--    <p name="infomation">噢耶</p>-->
+<!--</div>-->
+
+<script>
+    var action;
+    var i = 0;
+    var j = 0;
+    var k = 0;
+    function copy(x) {
+        const cont = x.firstElementChild;
+        const input = document.getElementById("input");
+        input.value = cont.innerHTML;
+        input.select();                          //选中
+        if (document.execCommand('copy')) {
+            document.execCommand('copy');       //复制
+            block();
+        }
+    }
+
+    function block(){
+        action = setInterval(function(){animate()},10);
+        setTimeout(function(){ clearInterval(action); }, 1000);
+        setTimeout(function(){
+            action = setInterval(function () {animate1()},10);
+        }, 1500);
+        setTimeout(function(){
+            clearInterval(action);
+        }, 2500);
+    }
+
+    function animate() {
+        i = i + 1;
+        document.getElementById('block').style.opacity = i + "%";
+    }
+    function animate1() {
+        i = i - 1;
+        document.getElementById('block').style.opacity = i + "%";
+    }
+
+    function add(emoji,information) {
+        if(j < 12){
+            var div = document.createElement('div');
+            div.style.left = j*150 + "px";
+            div.style.bottom = (j + k)*177 + "px";
+            div.innerHTML = "<button name=\"emoji\" onclick=\"copy(this)\"><font name=\"word\">" + emoji + "</font></button>\n" +
+                "    <p name=\"infomation\">" + information + "</p>";
+            var bo = document.body;
+            bo.insertBefore(div, bo.lastChild);
+            j++;
+        }else{
+            j = 0;
+            k = k + 11;
+            var div = document.createElement('div');
+            div.style.left = j*150 + "px";
+            div.style.bottom =(j + k)*177 + "px";
+            div.innerHTML = "<button name=\"emoji\" onclick=\"copy(this)\"><font name=\"word\">" + emoji + "</font></button>\n" +
+                "    <p name=\"infomation\">" + information + "</p>";
+            var bo = document.body;
+            bo.insertBefore(div, bo.lastChild);
+            j++;
+        }
+    }
+
+    add("(๑•̀ㅂ•́)و✧","棒");
+    add("(　ﾟ∀ﾟ) ﾉ♡","噢耶");
+
+</script>
+</body>
+</html>

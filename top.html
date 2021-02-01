@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-ch">
+<head>
+    <meta charset="UTF-8">
+    <title>top</title>
+    <style>
+        [name=bord]{
+            width: 120px;
+            height: 50px;
+            background-color: #add8e6;
+            border: 2px pink solid;
+            float: left;
+            cursor:pointer;
+            text-align: center;
+            font-size: 33px;
+            position: relative;
+        }
+
+        /*[name=bord]:hover{*/
+        /*    background-color: #48a7f7;*/
+        /*}*/
+
+        /*[name=bord]:hover [name=word]{*/
+        /*    color: white;*/
+        /*}*/
+
+
+    </style>
+</head>
+
+<p style="position: relative;left: 200px">
+    <div name="bord" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+            <font name="word">高兴</font>
+    <a href="content/smile.html" target="content"></a>
+    <p style="display: none">0</p>
+    </div>
+
+<div name="bord" style="left: 15px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+            <font name="word">生气</font>
+    <a href="content/angry.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 30px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+             <font name="word">害怕</font>
+    <a href="content/frightened.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 45px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+             <font name="word">卖萌</font>
+    <a href="content/cute.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 60px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+            <font name="word">尴尬</font>
+    <a href="content/embarrassed.html" target="content"></a>
+    <p style="display: none">0</p>
+
+</div>
+
+<div name="bord" style="left: 75px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">哭</font>
+    <a href="content/cry.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 90px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">贱</font>
+    <a href="content/scurvy.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 105px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">道歉</font>
+    <a href="content/sorry.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 120px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">赞</font>
+    <a href="content/good.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" style="left: 135px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">得意</font>
+    <a href="content/complacent.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+<div name="bord" id="temp" style="left: 150px" onmousemove="change(this)" onmouseout="changeReturn(this)" onclick="jump(this)">
+    <font name="word">其他</font>
+    <a href="content/others.html" target="content"></a>
+    <p style="display: none">0</p>
+</div>
+
+</p>
+<p>
+
+</p>
+
+<script>
+    var temp = document.getElementsByTagName('p');
+    function change(x) {
+            if(x.getElementsByTagName('p')[0].innerHTML == 1){
+                return;
+            }else{
+                x.style.backgroundColor="#48a7f7";
+                x.firstElementChild.color = "#f7f7f7";
+            }
+    }
+
+    function changeReturn(x) {
+        if(x.getElementsByTagName('p')[0].innerHTML == 1){
+            return;
+        }else{
+            x.style.backgroundColor="#add8e6";
+            x.firstElementChild.color = "#000000";
+        }
+    }
+
+    function jump(x) {
+        for(let i = 0;i < document.getElementsByTagName('p').length;i++){
+            document.getElementsByTagName('p')[i].innerHTML = "";
+        }
+
+        for(let i = 0;i<document.getElementsByTagName('div').length;i++){
+            document.getElementsByTagName('div')[i].style.backgroundColor="#add8e6";
+            document.getElementsByTagName('div')[i].firstElementChild.color = "#000000";
+        }
+        x.getElementsByTagName('p')[0].innerHTML = 1;
+        x.style.backgroundColor="#48a7f7";
+        x.firstElementChild.color = "#f7f7f7";
+        x.getElementsByTagName('a')[0].click();
+    }
+
+</script>
+</body>
+</html>
